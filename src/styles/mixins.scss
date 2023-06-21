@@ -1,0 +1,27 @@
+@mixin displayMx($display, $justify, $align, $direction) {
+  display: $display;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+@mixin sizeMx($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin dynamicSizeMx($maxWidth, $maxHeight) {
+  max-width: $maxWidth;
+  max-height: $maxHeight;
+}
+
+@mixin colorsMx($color, $background) {
+  color: $color;
+  background: $background;
+}
+
+
+/////////Variables
+$default: normal;
+
+

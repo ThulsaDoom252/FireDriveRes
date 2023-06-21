@@ -1,17 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
+import React, {useEffect, useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './firebase';
+import {store} from "./data/redux/store";
+import {Provider, useSelector} from "react-redux";
+import {GlobalStyle} from "./themes/globalStyle";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const Root = () => {
+    const currentTheme = useSelector((state) => state.basic.currentTheme);
+    const showMediaBackground = useSelector(state => state.basic.showMediaBackground)
+
+    const [images, setImages] = useState({});
+
+    useEffect(() => {
+        const loadImage = async () => {
+            const nightWallpaper = await import('./themes/nightWallpaper.jpg');
+            const highTechWallpaper = await import('./themes/highTechWallpaper.jpg');
+            const desertWallpaper = await import ('./themes/desertWallpaper.jpg')
+            const businessWallpaper = await import ('./themes/businessWallpaper.jpg')
+            setImages({
+                nightWallpaper: nightWallpaper.default,
+                highTechWallpaper: highTechWallpaper.default,
+                desertWallpaper: desertWallpaper.default,
+                businessWallpaper: businessWallpaper.default,
+            });
+        };
+
+        loadImage();
+    }, []);
+
+    return (
+        <>
+            <GlobalStyle currentTheme={currentTheme} images={images} showMediaBackground={showMediaBackground}/>
+            <App/>
+        </>
+    );
+};
+
+createRoot(document.getElementById('root')).render(
+    <Provider store={store}>
+        <Root/>
+    </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

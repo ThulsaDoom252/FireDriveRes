@@ -1,0 +1,163 @@
+@import "./src/styles/mixins";
+
+.header-container {
+  position: fixed;
+  @include displayMx(flex, space-between, center, $default);
+  @include sizeMx(100%, 60px);
+  background: linear-gradient(0deg, rgb(111, 124, 138) 0%, rgb(87, 83, 83) 100%);
+  font-size: 1.3rem;
+  font-family: "Droid Sans Mono", 'sans-serif';;
+  z-index: 2;
+}
+
+/*Logo*/
+.logo {
+  max-height: 60px;
+}
+
+/***NavBar*/
+.navbar {
+  @include displayMx(flex, space-between, $default, $default);
+  max-width: 20%;
+}
+
+.navItems, .navItems-active {
+  margin-right: 20px;
+  color: white;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+}
+
+.navItems-active {
+  text-decoration: underline;
+
+}
+
+/*MUSIC PLAYER*/
+.music-player-container, .music-player-container-disabled {
+  @include displayMx(flex, center, center, column);
+  @include sizeMx(250px, 55px);
+  @include colorsMx(black, linear-gradient(90deg, rgb(250, 230, 230) 0%, rgb(183, 243, 232) 15%, rgb(91, 255, 234) 100%));
+  font-family: Alkatra, 'sans-serif';;
+  font-size: 0.6rem;
+  border-radius: 10px;
+}
+
+.music-player-container-disabled {
+  color: gray;
+}
+
+.track-name {
+  position: relative;
+  top: 7px;
+}
+
+.player-buttons {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  top: 7px;
+}
+
+.player-buttons:hover {
+  border-radius: 10px;
+  background-color: #6ba8d7;
+  transition: 0.5s;
+}
+
+.time-display {
+  position: relative;
+  top: 7px;
+}
+
+.seek-bar-container {
+  position: relative;
+  bottom: 2px;
+}
+
+.seek-bar-container input[type=range] {
+  @include sizeMx(100%, 3px);
+  border-radius: 5px;
+  background-color: #e1a305;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  -webkit-appearance: none;
+
+}
+
+.seek-bar-container input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @include sizeMx(8px, 8px);
+  border-radius: 50%;
+  background-color: #2147ff;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+/*USER-BLOCK*/
+.user-block-container {
+  @include displayMx(flex, $default, center, column);
+  position: relative;
+  margin-right: 40px;
+  cursor: pointer;
+}
+
+.user-block-container:hover {
+  background-color: #7da2a2;
+}
+
+.user-avatar-container {
+  display: flex;
+  font-size: 0.8rem;
+  @include sizeMx(70px, 50px);
+}
+
+.user-avatar {
+  @include sizeMx(60px, 50px);
+  border-radius: 100px;
+}
+
+.user-expand-button {
+  @include colorsMx(white, transparent);
+  border: none;
+  font-size: 0.9rem;
+}
+
+/*USER-OPTIONS*/
+.user-options-block {
+  @include displayMx(flex, $default, $default, column);
+  position: absolute;
+  top: 50px;
+  border: black solid thick;
+  right: -41px;
+  background-color: #7aeaea;
+  width: 200px;
+}
+
+.userName-block {
+  @include displayMx(flex, center, center, $default);
+  height: 40px;
+  background-color: gray;
+  border-bottom: black solid thick;
+}
+
+.user-option-button {
+  @include displayMx(flex, space-between, center, $default);
+  @include colorsMx(white, #a69c9c);
+  height: 30px;
+  margin: 5px;
+  border: none;
+  font-family: "JetBrains Mono", 'sans-serif';;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.toggle-background-button {
+  font-size: 1.2rem;
+}
+
+//////////////////////////////////////////////////////////////////////////BREAKPOINTS
+

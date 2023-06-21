@@ -1,0 +1,17 @@
+@import "./keyframes";
+
+%centeredRowFlexDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%centeredColumnFlexDisplay {
+  @extend %centeredRowFlexDisplay;
+  flex-direction: column;
+}
+
+%objectCoverWithAnimation {
+  object-fit: cover;
+  animation: media-appear 500ms forwards;
+}

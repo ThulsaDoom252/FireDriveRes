@@ -1,0 +1,101 @@
+@import "./src/styles/mixins";
+@import "./src/styles/templates";
+@import "./src/styles/keyframes";
+
+.home-container {
+  @include displayMx(flex, center, $default, column);
+  font-family: Alkatra, 'sans-serif';;
+  text-align: center;
+  position: relative;
+  top: 80px;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.home-media-block-container {
+  background-color: rgba(255, 219, 219, 0.5);
+  border-radius: 5px;
+  width: 50vw;
+  display: flex;
+  margin: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.home-media-block-container:hover {
+  background-color: rgba(255, 254, 254, 0.78);
+  transition: 500ms;
+}
+
+.home-media-icon-item {
+  @extend %centeredRowFlexDisplay;
+  @include sizeMx(10%, 200px);
+  font-size: 8rem;
+}
+
+.home-media-icon {
+  color: rgba(161, 4, 66, 0.95);
+}
+
+.home-media-list-container {
+  @extend %centeredRowFlexDisplay;
+  @include sizeMx(75%, 200px);
+}
+
+.home-media-list-loading {
+  @extend %centeredRowFlexDisplay;
+  font-size: 1.2rem;
+}
+
+.home-media-image-item {
+  margin: 0 0 0 10px;
+}
+
+.home-media-image {
+  @extend %objectCoverWithAnimation;
+  @include sizeMx(100%, 100%);
+  border-radius: 5px;
+}
+
+.home-media-video-item {
+  margin: 0 0 0 10px;
+}
+
+.home-media-video {
+  @extend %objectCoverWithAnimation;
+  width: 90%;
+}
+
+.home-media-audio-item {
+  @extend %centeredColumnFlexDisplay;
+  margin: 0 0 0 10px;
+  animation: media-appear 500ms forwards;
+}
+
+.home-media-audio-icon-item {
+  @extend %centeredRowFlexDisplay;
+  @include sizeMx(100px, 100px);
+  background-color: rgba(178, 166, 166, 0.78);;
+  border-radius: 5px;
+}
+
+.home-media-audio-name {
+  font-size: 0.5rem;
+}
+
+.home-total-media-block {
+  @extend %centeredColumnFlexDisplay;
+  width: 10%;
+}
+
+.home-title {
+  animation: form-appear 0.5s forwards;
+}
+
+.home-main-text {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  max-width: 1000px;
+  border-radius: 5px;
+  animation: form-appear 0.5s forwards;
+}

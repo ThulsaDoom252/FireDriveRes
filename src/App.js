@@ -1,24 +1,35 @@
-import './App.css';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {useEffect} from "react";
+import Auth from "./components/Auth/Auth";
+import Main from "./components/Main";
+import Initializing from "./components/Initializing";
+import {signInRoute} from "./data/refs";
+import {getAuth} from "firebase/auth";
+import {useDispatch, useSelector} from "react-redux";
+import {checkAuth} from "./data/redux/auth-reducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const user = getAuth().currentUser
+    const dispatch = useDispatch()
+    const initializing = useSelector(state => state.auth.initializing)
+
+    useEffect(() => {
+        checkAuth({dispatch})
+    }, [user])
+
+    if (initializing) {
+        return <Initializing/>
+    }
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route exact path={signInRoute}
+                       element={<Auth/>}/>
+                <Route path={'*'} element={<Main/>}/>
+            </Routes>
+        </BrowserRouter>
+    );
+};
 
 export default App;
